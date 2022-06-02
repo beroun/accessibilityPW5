@@ -9,9 +9,10 @@
 }
 #formAccesibilidad input{
     position: relative;
-    margin: 40% 10%;
+    margin: 40% 18%;
+    font-weight: 700;
     background-color: black;
-    padding: 1rem 2rem;
+    padding: 1rem;
     border: 0;
     outline: 0;
     color: white;
@@ -20,8 +21,9 @@
 #formAccesibilidad input:hover{
     background-color: white;
     font-size: 1.1rem;
-    margin: 40% 8%; 
+    margin-right: 12%;
+    margin-left: 9%; 
     color: #003d83;
     transition: all 0.5s;
-    cursor: pointer
+    cursor: pointer;
 }
