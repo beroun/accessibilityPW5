@@ -1,6 +1,6 @@
 # accessibilityPW5
 
-Para instalar el botón de accesibilidad, hay que instalar los tres archivos en la misma carpeta del proyecto (index.html). Para instalarlos, hay que:
+Para instalar el botón de accesibilidad:
 - Descargar el archivo '.zip' desde: https://github.com/beroun/accessibilityPW5/archive/refs/heads/main.zip
 - Descomprimir o extraer la carpeta descargada.
 - Pegar los archivos extraídos (Readme.md no hace falta) en la misma carpeta del archivo .html que se quiere modificar.
