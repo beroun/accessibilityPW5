@@ -1,0 +1,26 @@
+#formAccesibilidad{
+    position: absolute;
+    right: 2rem;
+    bottom: 2rem;
+    width: 15rem;
+    height: 15rem;
+    border-radius: 50%;
+    background-color: #003d83;
+}
+#formAccesibilidad input{
+    position: relative;
+    margin: 40% 10%;
+    background-color: black;
+    padding: 1rem 2rem;
+    border: 0;
+    outline: 0;
+    color: white;
+    transition: all 0.5s;
+}
+#formAccesibilidad input:hover{
+    background-color: white;
+    font-size: 1.1rem;
+    margin: 40% 8%; 
+    color: #003d83;
+    transition: all 0.5s;
+}
