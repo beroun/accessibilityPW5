@@ -1,12 +1,6 @@
-
 *{
     padding: 0;
     margin: 0;
-}
-
-body{
-    position: relative;
-    background-color:blueviolet;
 }
 .boton_accesibilidad{
     position: absolute;
@@ -17,7 +11,6 @@ body{
     background: #F4F4F4;
     border-radius: 0px 59px 59px 0px;
 }
-
 .boton_accesibilidad img{
     position: absolute;
     top: 0;
@@ -26,10 +19,7 @@ body{
     margin: auto;
     width: 586px;
     height: 58px;
-    
-} 
-
-
+}
 .desplegable_accesibilidad{
     position:absolute;
     top:0;
@@ -37,14 +27,13 @@ body{
     height: 100vh;
     background: #F4F4F4;
     left: -156px;
-    transition: 0.5s ease-in;
-
+    transition: all 0.5s ease-in;
+    z-index: 999;
 }
 .desplegable_accesibilidad img{
     width: 64px;
     display: block;
     margin: auto; 
-    
 }
 .desplegable_accesibilidad p{
     font-family: 'Inter';
@@ -53,11 +42,11 @@ body{
     text-align: center;
     margin-bottom: 25px;
 }
-
 .desplegable_accesibilidad div h3{
     margin-top: 50px;
     margin-bottom: 50px;
     margin-left: 20px;
+    text-align: left;
 }
 /* .desplegable_accesibilidad:hover{
     transform: translateX(100%);
