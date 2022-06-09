@@ -1,0 +1,64 @@
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    position: relative;
+    background-color:blueviolet;
+}
+.boton_accesibilidad{
+    position: absolute;
+    width: 70px;
+    height: 64px;
+    left: 150px;
+    top: 609px;
+    background: #F4F4F4;
+    border-radius: 0px 59px 59px 0px;
+}
+
+.boton_accesibilidad img{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 5px;
+    margin: auto;
+    width: 586px;
+    height: 58px;
+    
+} 
+
+
+.desplegable_accesibilidad{
+    position:absolute;
+    top:0;
+    width: 156px;
+    height: 100vh;
+    background: #F4F4F4;
+    left: -156px;
+    transition: 0.5s ease-in;
+
+}
+.desplegable_accesibilidad img{
+    width: 64px;
+    display: block;
+    margin: auto; 
+    
+}
+.desplegable_accesibilidad p{
+    font-family: 'Inter';
+    font-weight: 700;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.desplegable_accesibilidad div h3{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 20px;
+}
+/* .desplegable_accesibilidad:hover{
+    transform: translateX(100%);
+} */
