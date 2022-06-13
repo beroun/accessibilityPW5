@@ -1,12 +1,54 @@
-function crearElementosDOM(){
-	var cont = createElement("div");
-	cont.id = "boton_menu";
-	cont.className = "desplegable_accesibilidad";
-	cont.innerHTML = '<div><h3>Opcions d’accessibilitat</h3></div><div id="text_size"><img src="img/text_size.svg" alt="Ampliar de texto"/><p>Ampliar tamany <br> de text</p></div><div id="text_align"><img src="img/alineacion_icon.svg" alt="alineacion icon"/><p>Al·lineació</p></div><div id="line_spacing"><img src="img/interlineado_icon.svg" alt="interlineado"/><p>Interlineat</p></div><div id="big_cursor"><img src="img/big_cursor.svg" alt="cursor grande"/><p>Cursor gran</p></div><div id="contrast"><img src="img/contraste_icon.svg" alt="contraste"/><p>Cambiar contraste</p></div><div id="links_style"><img src="img/links_highlight.svg" alt="links"/><p>Resaltar enllaços</p></div><div class="boton_accesibilidad"><img onclick="accesibilidad()" src="img/menu.svg" alt="accesibilidad"/></div>'
-	document.body.appendChild(cont);
+function crearImagen(parent,id,clase,src){
+	var elem = document.createElement("img");
+	elem.src = src;
+	elem.id = id;
+	elem.className = clase;
+	parent.appendChild(elem);
+	return elem;
+}
+function crearTexto(parent,tipo,id,clase,texto){
+	var elem = document.createElement(tipo);
+	var texto = document.createTextNode(texto);
+	elem.appendChild(texto);
+	parent.appendChild(elem);
+}
+function crearDiv(parent,id,clase){
+	var elem = document.createElement("div");
+	elem.id = id;
+	elem.className = clase;
+	parent.appendChild(elem);
+	return elem;
+}
+function crearCont(parent,tipo,id,clase){
+	var elem = document.createElement(tipo);
+	elem.id = id;
+	elem.className = clase;
+	crearTexto(crearDiv(elem,"",""),"h3","","","Opcions d’accessibilitat");
+	var cajita = crearDiv(elem,"text_size","");
+	crearImagen(cajita,"","","img/text_size.svg");
+	crearTexto(cajita,"p","","","Ampliar mida del texte");
+	cajita = crearDiv(elem,"text_align","");
+	crearImagen(cajita,"","","img/alineacion_icon.svg");
+	crearTexto(cajita,"p","","","Al·lineació");
+	cajita = crearDiv(elem,"line_spacing","");
+	crearImagen(cajita,"","","img/interlineado_icon.svg");
+	crearTexto(cajita,"p","","","Interlineat");
+	cajita = crearDiv(elem,"big_cursor","");
+	crearImagen(cajita,"","","img/big_cursor.svg");
+	crearTexto(cajita,"p","","","Cursor gran");
+	cajita = crearDiv(elem,"contrast","");
+	crearImagen(cajita,"","","img/contraste_icon.svg");
+	crearTexto(cajita,"p","","","Canviar contrast");
+	cajita = crearDiv(elem,"links_style","");
+	crearImagen(cajita,"","","img/links_highlight.svg");
+	crearTexto(cajita,"p","","","Resaltar enllaços");
+	cajita = crearDiv(elem,"","boton_accesibilidad");
+	var boton = crearImagen(cajita,"","Accesibilidad","img/menu.svg");
+	boton.onclick = accesibilidad;
+	parent.appendChild(elem);
 }
 function dynamicallyLoad(urljs, urlcss){
-	crearElementosDOM();
+	crearCont(document.body,"div","boton_menu","desplegable_accesibilidad");
 	var script = document.createElement("script"); // create a script DOM node
 	var estilo = document.createElement("link");
 	estilo.rel = "stylesheet";
@@ -24,11 +66,11 @@ var coloresTexto = new Array(elementos.length);
 var coloresBg = new Array(elementos.length);
 var coloresBorder = new Array(elementos.length);
 var colorBody = getComputedStyle(document.body).getPropertyValue("background-color");
-  for(let i = 0; i < elementos.length; i++){
-	  coloresBg[i] = getComputedStyle(elementos[i]).getPropertyValue("background-color");
-		  coloresTexto[i] = getComputedStyle(elementos[i]).getPropertyValue("color");
-		  coloresBorder[i] = getComputedStyle(elementos[i]).getPropertyValue("border-color");
-			}
+for(let i = 0; i < elementos.length; i++){
+	coloresBg[i] = getComputedStyle(elementos[i]).getPropertyValue("background-color");
+	coloresTexto[i] = getComputedStyle(elementos[i]).getPropertyValue("color");
+	coloresBorder[i] = getComputedStyle(elementos[i]).getPropertyValue("border-color");
+}
 function setCookie(cname, cvalue){
 	let domain = "domain=" + document.domain;
 	document.cookie = cname + "=" + cvalue + ";" + domain + "; SameSite=Lax";
@@ -58,19 +100,19 @@ function modoOscuro(){
 	document.body.querySelector(".desplegable_accesibilidad").style.filter = "invert(0%)";
 	for(let i = 0; i < elementos.length; i++){
 		if(elementos[i].className == "desplegable_accesibilidad" || elementos[i].parentElement.className == "desplegable_accesibilidad" || elementos[i].parentElement.parentElement.className == "desplegable_accesibilidad"){break;}
-			elementos[i].style.backgroundColor = tinycolor(coloresBg[i])
-			.darken(100)
-			.toHexString();
-			elementos[i].style.color = tinycolor(coloresTexto[i])
-			.lighten(100)
-			.toHexString();
-			elementos[i].style.borderColor = tinycolor(coloresBorder[i])
-			.lighten(100)
-			.toHexString();
-		}
-		document.body.style.backgroundColor = tinycolor(colorBody).lighten(30).toHexString();
-		document.querySelector("#contrast").onclick = modoClaro;
-		setCookie("contraste", "oscuro");
+		elementos[i].style.backgroundColor = tinycolor(coloresBg[i])
+		.darken(100)
+		.toHexString();
+		elementos[i].style.color = tinycolor(coloresTexto[i])
+		.lighten(100)
+		.toHexString();
+		elementos[i].style.borderColor = tinycolor(coloresBorder[i])
+		.lighten(100)
+		.toHexString();
+	}
+	document.body.style.backgroundColor = tinycolor(colorBody).lighten(30).toHexString();
+	document.querySelector("#contrast").onclick = modoClaro;
+	setCookie("contraste", "oscuro");
 };
 function modoClaro(){
 	for(let i = 0; i < elementos.length; i++){
