@@ -1,6 +1,12 @@
+function crearElementosDOM(){
+	var cont = createElement("div");
+	cont.id = "boton_menu";
+	cont.className = "desplegable_accesibilidad";
+	cont.innerHTML = '<div><h3>Opcions d’accessibilitat</h3></div><div id="text_size"><img src="img/text_size.svg" alt="Ampliar de texto"/><p>Ampliar tamany <br> de text</p></div><div id="text_align"><img src="img/alineacion_icon.svg" alt="alineacion icon"/><p>Al·lineació</p></div><div id="line_spacing"><img src="img/interlineado_icon.svg" alt="interlineado"/><p>Interlineat</p></div><div id="big_cursor"><img src="img/big_cursor.svg" alt="cursor grande"/><p>Cursor gran</p></div><div id="contrast"><img src="img/contraste_icon.svg" alt="contraste"/><p>Cambiar contraste</p></div><div id="links_style"><img src="img/links_highlight.svg" alt="links"/><p>Resaltar enllaços</p></div><div class="boton_accesibilidad"><img onclick="accesibilidad()" src="img/menu.svg" alt="accesibilidad"/></div>'
+	document.body.appendChild(cont);
+}
 function dynamicallyLoad(urljs, urlcss){
-	document.body.innerHTML +=
-	'<div id="boton_menu" class="desplegable_accesibilidad"><div><h3>Opcions d’accessibilitat</h3></div><div id="text_size"><img src="img/text_size.svg" alt="Ampliar de texto"/><p>Ampliar tamany <br> de text</p></div><div id="text_align"><img src="img/alineacion_icon.svg" alt="alineacion icon"/><p>Al·lineació</p></div><div id="line_spacing"><img src="img/interlineado_icon.svg" alt="interlineado"/><p>Interlineat</p></div><div id="big_cursor"><img src="img/big_cursor.svg" alt="cursor grande"/><p>Cursor gran</p></div><div id="contrast"><img src="img/contraste_icon.svg" alt="contraste"/><p>Cambiar contraste</p></div><div id="links_style"><img src="img/links_highlight.svg" alt="links"/><p>Resaltar enllaços</p></div><div class="boton_accesibilidad"><img onclick="accesibilidad()" src="img/menu.svg" alt="accesibilidad"/></div></div>';
+	crearElementosDOM();
 	var script = document.createElement("script"); // create a script DOM node
 	var estilo = document.createElement("link");
 	estilo.rel = "stylesheet";
