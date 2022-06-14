@@ -110,13 +110,11 @@ function getCookie(cname){
 // Funciones del contraste
 function contrasteInvert(){
 	document.body.style.filter = "invert(100%)";
-	// document.body.querySelector(".desplegable_accesibilidad").style.filter = "invert(100%)";
 	document.querySelector("#contrast").onclick = contrasteOscuro;
 	setCookie("contraste", "invertido");
 };
 function contrasteOscuro(){
 	document.body.style.filter = "invert(0%)";
-	// document.body.querySelector(".desplegable_accesibilidad").style.filter = "invert(0%)";
 	for(let i = 0; i < elementos.length; i++){
 		if(elementos[i].className == "desplegable_accesibilidad" || elementos[i].parentElement.className == "desplegable_accesibilidad" || elementos[i].parentElement.parentElement.className == "desplegable_accesibilidad"){break;}
 		elementos[i].style.backgroundColor = tinycolor(coloresBg[i]).darken(100).toHexString();
@@ -215,7 +213,6 @@ function mostrarMenuAccesibilidad(){
 
 // Inicializamos con valor anterior, si lo hay
 function start(){
-	console.log(bodyAlign);
 	switch(getCookie("contraste")){
 		case "oscuro":
 			contrasteOscuro();break;

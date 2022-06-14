@@ -7,8 +7,8 @@
 }
 #iframe{
     position:absolute;
-    top:0;
-    bottom:0;
+    top: 0;
+    bottom: 0;
     height: 100vh;
     width: 100vw;
 }
@@ -31,8 +31,8 @@
     height: 58px;
 }
 .desplegable_accesibilidad{
-    position:absolute;
-    top:0;
+    position: fixed;
+    top: 0;
     width: 156px;
     height: 100vh;
     background: #F4F4F4;
@@ -58,6 +58,3 @@
     margin-left: 20px;
     text-align: left;
 }
-/* .desplegable_accesibilidad:hover{
-    transform: translateX(100%);
-} */
