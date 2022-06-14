@@ -2,6 +2,16 @@
     padding: 0;
     margin: 0;
 }
+*, *::before, *::after{
+	box-sizing: border-box;
+}
+#iframe{
+    position:absolute;
+    top:0;
+    bottom:0;
+    height: 100vh;
+    width: 100vw;
+}
 .boton_accesibilidad{
     position: absolute;
     width: 70px;

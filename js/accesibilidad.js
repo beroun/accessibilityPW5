@@ -44,11 +44,12 @@ function crearCont(parent,tipo,id,clase){
 	crearTexto(cajita,"p","","","Resaltar enllaços");
 	cajita = crearDiv(elem,"","boton_accesibilidad");
 	var boton = crearImagen(cajita,"","Accesibilidad","img/menu.svg");
-	boton.onclick = accesibilidad;
+	boton.onclick = mostrarMenuAccesibilidad;
 	parent.appendChild(elem);
 }
-function dynamicallyLoad(urljs, urlcss){
-	crearCont(document.body,"div","boton_menu","desplegable_accesibilidad");
+function cargarElementos(urljs, urlcss){
+	var caja = crearDiv(document.documentElement,"iframe","");
+	crearCont(caja,"div","boton_menu","desplegable_accesibilidad");
 	var script = document.createElement("script"); // create a script DOM node
 	var estilo = document.createElement("link");
 	estilo.rel = "stylesheet";
@@ -57,7 +58,8 @@ function dynamicallyLoad(urljs, urlcss){
 	document.head.appendChild(script); // add it to the end of the head section of the page (could change 'head' to 'body' to add it to the end of the body section instead)
 	document.head.appendChild(estilo);
 }
-dynamicallyLoad("js/tinycolor.js", "css/accesibilidad.css");
+cargarElementos("js/tinycolor.js", "css/accesibilidad.css");
+// Declaración variables contraste
 var elementos = document.body.querySelectorAll("*");
 var parrafos = document.body.querySelectorAll("p");
 var cajas = document.body.querySelectorAll("div");
@@ -66,11 +68,27 @@ var coloresTexto = new Array(elementos.length);
 var coloresBg = new Array(elementos.length);
 var coloresBorder = new Array(elementos.length);
 var colorBody = getComputedStyle(document.body).getPropertyValue("background-color");
+// Declaración variable de la alineación del texto
+var bodyAlign = getComputedStyle(document.body).getPropertyValue("text-align");
+// Declaración variables links
+var links= document.querySelectorAll("a");
+const linkValueBackgroundColor = new Array(links.length);
+const linkValueColor= new Array(links.length);
+const linkValueTextDecoration = new Array(links.length);
+const linkValueFontSize = new Array(links.length);
+// Guardamos estilo del contraste
+for(let i=0; i<links.length;i++){
+	linkValueBackgroundColor = getComputedStyle(linkValueBackgroundColor[i]).getPropertyValue('background-color');
+	linkValueColor = getComputedStyle(linkValueColor[i]).getPropertyValue('color');
+	linkValueTextDecoration = getComputedStyle(linkValueTextDecoration[i]).getPropertyValue('text-decoration');
+	linkValueFontSize = getComputedStyle(linkValueFontSize[i]).getPropertyValue('font-size');
+}
 for(let i = 0; i < elementos.length; i++){
 	coloresBg[i] = getComputedStyle(elementos[i]).getPropertyValue("background-color");
 	coloresTexto[i] = getComputedStyle(elementos[i]).getPropertyValue("color");
 	coloresBorder[i] = getComputedStyle(elementos[i]).getPropertyValue("border-color");
 }
+// Funciones de las cookies
 function setCookie(cname, cvalue){
 	let domain = "domain=" + document.domain;
 	document.cookie = cname + "=" + cvalue + ";" + domain + "; SameSite=Lax";
@@ -89,45 +107,38 @@ function getCookie(cname){
 	}
 	return "";
 }
-function modoInvert(){
+// Funciones del contraste
+function contrasteInvert(){
 	document.body.style.filter = "invert(100%)";
-	document.body.querySelector(".desplegable_accesibilidad").style.filter = "invert(100%)";
-	document.querySelector("#contrast").onclick = modoOscuro;
+	// document.body.querySelector(".desplegable_accesibilidad").style.filter = "invert(100%)";
+	document.querySelector("#contrast").onclick = contrasteOscuro;
 	setCookie("contraste", "invertido");
 };
-function modoOscuro(){
+function contrasteOscuro(){
 	document.body.style.filter = "invert(0%)";
-	document.body.querySelector(".desplegable_accesibilidad").style.filter = "invert(0%)";
+	// document.body.querySelector(".desplegable_accesibilidad").style.filter = "invert(0%)";
 	for(let i = 0; i < elementos.length; i++){
 		if(elementos[i].className == "desplegable_accesibilidad" || elementos[i].parentElement.className == "desplegable_accesibilidad" || elementos[i].parentElement.parentElement.className == "desplegable_accesibilidad"){break;}
-		elementos[i].style.backgroundColor = tinycolor(coloresBg[i])
-		.darken(100)
-		.toHexString();
-		elementos[i].style.color = tinycolor(coloresTexto[i])
-		.lighten(100)
-		.toHexString();
-		elementos[i].style.borderColor = tinycolor(coloresBorder[i])
-		.lighten(100)
-		.toHexString();
+		elementos[i].style.backgroundColor = tinycolor(coloresBg[i]).darken(100).toHexString();
+		elementos[i].style.color = tinycolor(coloresTexto[i]).lighten(100).toHexString();
+		elementos[i].style.borderColor = tinycolor(coloresBorder[i]).lighten(100).toHexString();
 	}
 	document.body.style.backgroundColor = tinycolor(colorBody).lighten(30).toHexString();
-	document.querySelector("#contrast").onclick = modoClaro;
+	document.querySelector("#contrast").onclick = contrasteClaro;
 	setCookie("contraste", "oscuro");
 };
-function modoClaro(){
+function contrasteClaro(){
 	for(let i = 0; i < elementos.length; i++){
 		if(elementos[i].className == "desplegable_accesibilidad" || elementos[i].parentElement.className == "desplegable_accesibilidad" || elementos[i].parentElement.parentElement.className == "desplegable_accesibilidad"){break;}
-	elementos[i].style.backgroundColor = tinycolor(coloresBg[i]).lighten(100).toHexString();
-	elementos[i].style.color = tinycolor(coloresTexto[i]).darken(100).toHexString();
-	elementos[i].style.borderColor = tinycolor(coloresBorder[i]).darken(100).toHexString();
+		elementos[i].style.backgroundColor = tinycolor(coloresBg[i]).lighten(100).toHexString();
+		elementos[i].style.color = tinycolor(coloresTexto[i]).darken(100).toHexString();
+		elementos[i].style.borderColor = tinycolor(coloresBorder[i]).darken(100).toHexString();
 	}
-	document.body.style.backgroundColor = tinycolor(colorBody)
-	.lighten(70)
-	.toHexString();
-	document.querySelector("#contrast").onclick = modoOrig;
+	document.body.style.backgroundColor = tinycolor(colorBody).lighten(70).toHexString();
+	document.querySelector("#contrast").onclick = contrasteOrig;
 	setCookie("contraste", "claro");
 };
-function modoOrig(){
+function contrasteOrig(){
 	for(let i = 0; i < elementos.length; i++){
 		if(elementos[i].className == "desplegable_accesibilidad" || elementos[i].parentElement.className == "desplegable_accesibilidad" || elementos[i].parentElement.parentElement.className == "desplegable_accesibilidad"){break;}
 		elementos[i].style.backgroundColor = coloresBg[i];
@@ -135,24 +146,64 @@ function modoOrig(){
 		elementos[i].style.borderColor = coloresBorder[i];
 	}
 	document.body.style.backgroundColor = colorBody;
-	document.querySelector("#contrast").onclick = modoInvert;
+	document.querySelector("#contrast").onclick = contrasteInvert;
 	setCookie("contraste", "original");
 };
-document.querySelector("#contrast").onclick = modoInvert;
-console.log(getCookie("contraste"));
-function start(){
-	switch(getCookie("contraste")){
-		case "oscuro":
-			modoOscuro();break;
-		case "claro":
-			modoClaro();break;
-		case "invertido":
-			modoInvert();break;
-		default:
-			return;
-	}
+document.querySelector("#contrast").onclick = contrasteInvert;
+
+// Funciones para alinear el texto
+function alignCenter(){
+	document.body.style.textAlign="center";
+	document.getElementById('text_align').onclick = alignLeft;
+	setCookie("alineaTexto", "centro");
 }
-function accesibilidad(){
+function alignLeft(){
+	document.body.style.textAlign="left";
+	document.getElementById('text_align').onclick = alignRight;
+	setCookie("alineaTexto", "izquierda");
+}
+function alignRight(){
+	document.body.style.textAlign="right";
+	document.getElementById('text_align').onclick = alignJustify;
+	setCookie("alineaTexto", "derecha");
+}
+function alignJustify(){
+	document.body.style.textAlign="justify";
+	document.getElementById('text_align').onclick = alignOriginal;
+	setCookie("alineaTexto", "justificado");
+}
+function alignOriginal(){
+	document.body.style.textAlign = bodyAlign;
+	document.getElementById('text_align').onclick = alignCenter;
+	setCookie("alineaTexto", "original");
+}
+// Posición inicial del botón
+document.getElementById('text_align').onclick = alignCenter;
+
+// Funciones resaltado enlaces
+const retornarStyleLink = () => {
+	for (let j = 0; j < links.length; j++) {
+		links[j].style.backgroundColor = linkValueBackgroundColor[j];
+		links[j].style.color = linkValueColor[j];
+		links[j].style.textDecoration = linkValueTextDecoration[j];
+		links[j].style.fontSize = linkValueFontSize[j];
+	}
+	document.getElementById('links_style').onclick = cambioStyleLink;
+	setCookie("enlaces", "original");
+}
+const cambioStyleLink = () =>{
+	for (let k = 0; k < links.length; k++) {
+		links[k].style.backgroundColor= "#000000";
+		links[k].style.color = "#ffff00";
+		links[k].style.textDecoration="underline";
+		links[k].style.fontSize="large";
+	}
+	document.getElementById('links_style').onclick = retornarStyleLink;
+	setCookie("enlaces", "resaltados");
+}
+
+// Función para esconder o mostrar el menú
+function mostrarMenuAccesibilidad(){
 	var menu_acc=document.getElementById("boton_menu");
 	if(menu_acc.style.transform =="translate(100%)"){
 		menu_acc.style.transform ="translate(0%)";
@@ -161,33 +212,38 @@ function accesibilidad(){
 		menu_acc.style.transform ="translate(100%)";
 	}
 }
-function one(){    
-	document.querySelector("#text_align").style.textAlign = "center";
-	document.querySelector("body").style.textAlign="center";
-	//pasas el onclick a la funcion 2 despues de la primera orden
-	document.getElementById('text_align').onclick = two;
+
+// Inicializamos con valor anterior, si lo hay
+function start(){
+	console.log(bodyAlign);
+	switch(getCookie("contraste")){
+		case "oscuro":
+			contrasteOscuro();break;
+		case "claro":
+			contrasteClaro();break;
+		case "invertido":
+			contrasteInvert();break;
+		default:
+			contrasteOrig();break;
+	}
+	switch(getCookie("enlaces")){
+		case "resaltados":
+			cambioStyleLink();break;
+		default:
+			retornarStyleLink();break;
+	}
+	switch(getCookie("alineaTexto")){
+		case "centro":
+			alignCenter();break;
+		case "izquierda":
+			alignLeft();break;
+		case "derecha":
+			alignRight();break;
+		case "justificado":
+			alignJustify();break;
+		default:
+			alignOriginal();break;
+	}
 }
-//CLICK 2 DE LA FUNCION TWO;
-function two(){
-	document.querySelector("#text_align").style.textAlign = "left";
-	document.querySelector("body").style.textAlign="left";
-	//pasas el onclick a la funcion 3 despues de la primera orden
-	document.getElementById('text_align').onclick = three;
-}
-//CLICK 2 DE LA FUNCION THREE;
-function three(){
-	document.querySelector("#text_align").style.textAlign = "right";
-	document.querySelector("body").style.textAlign="right";
-	//pasas el onclick a la funcion 4 despues de la primera orden
-	document.getElementById('text_align').onclick = four;
-}
-//CLICK 2 DE LA FUNCION FOUR;
-function four(){
-	document.querySelector("#text_align").style.textAlign = "justify";
-	document.querySelector("body").style.textAlign="justify";
-	//pasas el onclick a la funcion 1 despues de la primera orden
-document.getElementById('text_align').onclick = one;
-}
-//Inicializacion (donde inicia) el o click (puedes cambiarla a cualquiera)
-document.getElementById('text_align').onclick = one;
+// Llamamos a la función que mira las cookies al cargar la página.
 document.body.onload = start;
