@@ -48,8 +48,7 @@ function crearCont(parent,tipo,id,clase){
 	parent.appendChild(elem);
 }
 function cargarElementos(urljs, urlcss){
-	var caja = crearDiv(document.documentElement,"iframe","");
-	crearCont(caja,"div","boton_menu","desplegable_accesibilidad");
+	crearCont(document.documentElement,"div","boton_menu","desplegable_accesibilidad");
 	var script = document.createElement("script"); // create a script DOM node
 	var estilo = document.createElement("link");
 	estilo.rel = "stylesheet";
@@ -61,13 +60,19 @@ function cargarElementos(urljs, urlcss){
 cargarElementos("js/tinycolor.js", "css/accesibilidad.css");
 // Declaración variables contraste
 var elementos = document.body.querySelectorAll("*");
-var parrafos = document.body.querySelectorAll("p");
-var cajas = document.body.querySelectorAll("div");
-var enlaces = document.body.querySelectorAll("a");
 var coloresTexto = new Array(elementos.length);
 var coloresBg = new Array(elementos.length);
 var coloresBorder = new Array(elementos.length);
 var colorBody = getComputedStyle(document.body).getPropertyValue("background-color");
+// Declaración variables interlineado
+var interlineado = new Array(elementos.length);
+// Guardamos el estilo de los elementos
+for(let i = 0; i < elementos.length; i++){
+	coloresBg[i] = getComputedStyle(elementos[i]).getPropertyValue("background-color");
+	coloresTexto[i] = getComputedStyle(elementos[i]).getPropertyValue("color");
+	coloresBorder[i] = getComputedStyle(elementos[i]).getPropertyValue("border-color");
+	interlineado[i] = getComputedStyle(elementos[i]).getPropertyValue("line-height");
+}
 // Declaración variable de la alineación del texto
 var bodyAlign = getComputedStyle(document.body).getPropertyValue("text-align");
 // Declaración variables links
@@ -76,17 +81,12 @@ const linkValueBackgroundColor = new Array(links.length);
 const linkValueColor= new Array(links.length);
 const linkValueTextDecoration = new Array(links.length);
 const linkValueFontSize = new Array(links.length);
-// Guardamos estilo del contraste
+// Guardamos estilo de los enlaces
 for(let i=0; i<links.length;i++){
-	linkValueBackgroundColor = getComputedStyle(linkValueBackgroundColor[i]).getPropertyValue('background-color');
-	linkValueColor = getComputedStyle(linkValueColor[i]).getPropertyValue('color');
-	linkValueTextDecoration = getComputedStyle(linkValueTextDecoration[i]).getPropertyValue('text-decoration');
-	linkValueFontSize = getComputedStyle(linkValueFontSize[i]).getPropertyValue('font-size');
-}
-for(let i = 0; i < elementos.length; i++){
-	coloresBg[i] = getComputedStyle(elementos[i]).getPropertyValue("background-color");
-	coloresTexto[i] = getComputedStyle(elementos[i]).getPropertyValue("color");
-	coloresBorder[i] = getComputedStyle(elementos[i]).getPropertyValue("border-color");
+	linkValueBackgroundColor[i] = getComputedStyle(links[i]).getPropertyValue('background-color');
+	linkValueColor[i] = getComputedStyle(links[i]).getPropertyValue('color');
+	linkValueTextDecoration[i] = getComputedStyle(links[i]).getPropertyValue('text-decoration');
+	linkValueFontSize[i] = getComputedStyle(links[i]).getPropertyValue('font-size');
 }
 // Funciones de las cookies
 function setCookie(cname, cvalue){
@@ -109,11 +109,13 @@ function getCookie(cname){
 }
 // Funciones del contraste
 function contrasteInvert(){
+	document.querySelector("#contrast p").innerHTML = "Contrast elevat oscur";
 	document.body.style.filter = "invert(100%)";
 	document.querySelector("#contrast").onclick = contrasteOscuro;
 	setCookie("contraste", "invertido");
 };
 function contrasteOscuro(){
+	document.querySelector("#contrast p").innerHTML = "Contrast elevat clar";
 	document.body.style.filter = "invert(0%)";
 	for(let i = 0; i < elementos.length; i++){
 		if(elementos[i].className == "desplegable_accesibilidad" || elementos[i].parentElement.className == "desplegable_accesibilidad" || elementos[i].parentElement.parentElement.className == "desplegable_accesibilidad"){break;}
@@ -126,6 +128,7 @@ function contrasteOscuro(){
 	setCookie("contraste", "oscuro");
 };
 function contrasteClaro(){
+	document.querySelector("#contrast p").innerHTML = "Contrast original";
 	for(let i = 0; i < elementos.length; i++){
 		if(elementos[i].className == "desplegable_accesibilidad" || elementos[i].parentElement.className == "desplegable_accesibilidad" || elementos[i].parentElement.parentElement.className == "desplegable_accesibilidad"){break;}
 		elementos[i].style.backgroundColor = tinycolor(coloresBg[i]).lighten(100).toHexString();
@@ -137,6 +140,7 @@ function contrasteClaro(){
 	setCookie("contraste", "claro");
 };
 function contrasteOrig(){
+	document.querySelector("#contrast p").innerHTML = "Colors invertits";
 	for(let i = 0; i < elementos.length; i++){
 		if(elementos[i].className == "desplegable_accesibilidad" || elementos[i].parentElement.className == "desplegable_accesibilidad" || elementos[i].parentElement.parentElement.className == "desplegable_accesibilidad"){break;}
 		elementos[i].style.backgroundColor = coloresBg[i];
@@ -147,39 +151,53 @@ function contrasteOrig(){
 	document.querySelector("#contrast").onclick = contrasteInvert;
 	setCookie("contraste", "original");
 };
-document.querySelector("#contrast").onclick = contrasteInvert;
 
 // Funciones para alinear el texto
 function alignCenter(){
+    document.querySelector("#text_align p").innerHTML="Texte centrar";
 	document.body.style.textAlign="center";
 	document.getElementById('text_align').onclick = alignLeft;
 	setCookie("alineaTexto", "centro");
 }
 function alignLeft(){
+    document.querySelector("#text_align p").innerHTML="Texte a l'esquerra";
 	document.body.style.textAlign="left";
 	document.getElementById('text_align').onclick = alignRight;
 	setCookie("alineaTexto", "izquierda");
 }
 function alignRight(){
+	document.querySelector("#text_align p").innerHTML="Texte a la dreta";
 	document.body.style.textAlign="right";
 	document.getElementById('text_align').onclick = alignJustify;
 	setCookie("alineaTexto", "derecha");
 }
 function alignJustify(){
+    document.querySelector("#text_align p").innerHTML="Texte justificat";
 	document.body.style.textAlign="justify";
 	document.getElementById('text_align').onclick = alignOriginal;
 	setCookie("alineaTexto", "justificado");
 }
 function alignOriginal(){
+    document.querySelector("#text_align p").innerHTML="Texte no alineat";
 	document.body.style.textAlign = bodyAlign;
 	document.getElementById('text_align').onclick = alignCenter;
 	setCookie("alineaTexto", "original");
 }
-// Posición inicial del botón
-document.getElementById('text_align').onclick = alignCenter;
 
 // Funciones resaltado enlaces
+const cambioStyleLink = () =>{
+	document.querySelector('#links_style p').innerHTML = "Retornar estil enllaços";
+	for (let k = 0; k < links.length; k++) {
+		links[k].style.backgroundColor= "#000000";
+		links[k].style.color = "#ffff00";
+		links[k].style.textDecoration="underline";
+		links[k].style.fontSize="large";
+	}
+	document.getElementById('links_style').onclick = retornarStyleLink;
+	setCookie("enlaces", "resaltados");
+}
 const retornarStyleLink = () => {
+	document.querySelector('#links_style p').innerHTML = "Resaltar enllaços";
 	for (let j = 0; j < links.length; j++) {
 		links[j].style.backgroundColor = linkValueBackgroundColor[j];
 		links[j].style.color = linkValueColor[j];
@@ -189,15 +207,47 @@ const retornarStyleLink = () => {
 	document.getElementById('links_style').onclick = cambioStyleLink;
 	setCookie("enlaces", "original");
 }
-const cambioStyleLink = () =>{
-	for (let k = 0; k < links.length; k++) {
-		links[k].style.backgroundColor= "#000000";
-		links[k].style.color = "#ffff00";
-		links[k].style.textDecoration="underline";
-		links[k].style.fontSize="large";
+
+// Funciones cambio interlineado
+function interlineadoLow() {
+	document.querySelector("#line_spacing p").innerHTML="Line-Height: 1";
+	for (let i = 0; i < elementos.length; i++) {
+		elementos[i].style.lineHeight = "1";
 	}
-	document.getElementById('links_style').onclick = retornarStyleLink;
-	setCookie("enlaces", "resaltados");
+	document.getElementById("line_spacing").onclick = interlineadoMed;
+	setCookie("interlineado", "low");
+}
+function interlineadoMed() {
+	document.querySelector("#line_spacing p").innerHTML="Line-Height: 1.35";
+	for (let i = 0; i < elementos.length; i++) {
+		elementos[i].style.lineHeight = "1.35";
+	}
+	document.getElementById("line_spacing").onclick = interlineadoHigh;
+	setCookie("interlineado", "med");
+}
+function interlineadoHigh() {
+	document.querySelector("#line_spacing p").innerHTML="Line-Height: 1.65";
+	for (let i = 0; i < elementos.length; i++) {
+		elementos[i].style.lineHeight = "1.65";
+	}
+	document.getElementById("line_spacing").onclick = interlineadoMax;
+	setCookie("interlineado", "high");
+}
+function interlineadoMax() {
+	document.querySelector("#line_spacing p").innerHTML="Line-Height: 2";
+	for (let i = 0; i < elementos.length; i++) {
+		elementos[i].style.lineHeight = "2";
+	}
+	document.getElementById("line_spacing").onclick = interlineadoOrig;
+	setCookie("interlineado", "max");
+}
+function interlineadoOrig() {
+	document.querySelector("#line_spacing p").innerHTML="Line-Height: Original";
+	for (let i = 0; i < elementos.length; i++) {
+		elementos[i].style.lineHeight = interlineado[i];
+	}
+	document.getElementById("line_spacing").onclick = interlineadoLow;
+	setCookie("interlineado", "original");
 }
 
 // Función para esconder o mostrar el menú
@@ -241,6 +291,23 @@ function start(){
 		default:
 			alignOriginal();break;
 	}
+	switch(getCookie("interlineado")){
+		case "low":
+			interlineadoLow();break;
+		case "med":
+			interlineadoMed();break;
+		case "high":
+			interlineadoHigh();break;
+		case "max":
+			interlineadoMax();break;
+		default:
+			interlineadoOrig();break;
+	}
 }
+
 // Llamamos a la función que mira las cookies al cargar la página.
 document.body.onload = start;
+
+
+
+

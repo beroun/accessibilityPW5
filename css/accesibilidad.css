@@ -5,13 +5,6 @@
 *, *::before, *::after{
 	box-sizing: border-box;
 }
-#iframe{
-    position:absolute;
-    top: 0;
-    bottom: 0;
-    height: 100vh;
-    width: 100vw;
-}
 .boton_accesibilidad{
     position: absolute;
     width: 70px;
@@ -38,7 +31,6 @@
     background: #F4F4F4;
     left: -156px;
     transition: all 0.5s ease-in;
-    z-index: 999;
 }
 .desplegable_accesibilidad img{
     width: 64px;
@@ -50,7 +42,7 @@
     font-weight: 700;
     font-size: 16px;
     text-align: center;
-    margin-bottom: 25px;
+    margin: 0 5px 25px 5px;
 }
 .desplegable_accesibilidad div h3{
     margin-top: 50px;
