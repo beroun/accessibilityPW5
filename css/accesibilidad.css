@@ -1,31 +1,71 @@
+/* RESET */
 *{
     padding: 0;
     margin: 0;
 }
 *, *::before, *::after{
-	box-sizing: border-box;
+    box-sizing: border-box;
 }
+/* FIN RESET */
+
+/* Contenedor que engloba todo el menú de accesibilidad */
+.desplegable_accesibilidad{
+    position: fixed;
+    top: 0;
+    width: 220px;
+    height: 100vh;
+    background: #eff1f5;
+    left: -220px;
+    transition: all 0.5s ease-in;
+}
+/* Cada uno de los iconos del menú */
+.desplegable_accesibilidad img{
+    width: 50px;
+    display: block;
+    margin: auto;
+}
+/* Solución temporal para hacer icono enlaces más grande */
+#links_highlight img{
+    width: 70px;
+}
+/* Texto debajo de los iconos */
+.desplegable_accesibilidad p{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: auto;
+}
+/* Título del menú de accesibilidad */
+.desplegable_accesibilidad div h3{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
+    text-align: center;
+}
+/* Botón que muestra y esconde el menú */
 .boton_showhide{
     position: absolute;
     width: 70px;
     height: 64px;
     left: 220px;
-    top: 609px;
+    bottom: 150px;
     background: #eff1f5;
     border-radius: 0px 59px 59px 0px;
 }
+/* Imagen del botón que muestra y esconde el menú */
 .boton_showhide img{
     position: absolute;
     top: 0;
     bottom: 0;
     left: 12px;
     margin: auto;
-    width: 586px;
-    height: 58px;
+    width: 50px;
 }
+
+/* Cada uno de los botones que cambia el estilo */
 .contenedor_accesibilidad{
     margin:auto;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     position: relative;
     width: 180px;
     height: 120px;
@@ -39,46 +79,26 @@
     border: 2px solid #EFF1F5;
     transition: border-color 0.15s ease;
 }
+.contenedor_accesibilidad:hover{
+    border-color: #00a3d6;
+}
+/* Estas clases se le asignan a los botones que están seleccionados (activos) */
+.elemento_activo{
+    outline:4px solid rgb(0, 163, 214, 0.2);
+    border-color: #00a3d6;
+}
 .elemento_activo p, .elemento_activo img {
     filter: invert(44%) sepia(95%) saturate(613%) hue-rotate(153deg) brightness(94%) contrast(105%);
-    
 }
-.elemento_activo{
-    outline:4px solid rgb(100, 149, 237,0.3);
-}
-.contenedor_accesibilidad:hover{
-    border-color: black;
-}
+/* Esto es el icono Check de los botones activos */
 .elemento_activo::after{
-    content:"\2611";
-    right: 0;
-    top: 0;
+    text-rendering:geometricPrecision;
+    font-family: "Font Awesome 5 Free";
+    filter: invert(44%) sepia(95%) saturate(613%) hue-rotate(153deg) brightness(94%) contrast(105%); 
+    font-size: 20px;
+    font-weight: 700; 
+    content:"\f058";
+    right: 6px;
+    top: 6px;
     position: absolute;
-}
-.desplegable_accesibilidad{
-    position: fixed;
-    top: 0;
-    width: 220px;
-    height: 100vh;
-    background: #eff1f5;
-    left: -220px;
-    transition: all 0.5s ease-in;
-}
-.desplegable_accesibilidad img{
-    width: 50px;
-    display: block;
-    margin: auto;
-}
-.desplegable_accesibilidad p{
-    font-family: 'Inter';
-    font-weight: 700;
-    font-size: 14px;
-    text-align: center;
-    margin-bottom: auto;
-}
-.desplegable_accesibilidad div h3{
-    margin-top: 14px;
-    margin-bottom: 40px;
-    margin-left: 20px;
-    text-align: left;
 }

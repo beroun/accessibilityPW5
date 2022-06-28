@@ -15,7 +15,7 @@
    version="1.1"
    id="svg1036"
    inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
-   sodipodi:docname="contraste_icon.svg">
+   sodipodi:docname="contrast_white_icon.svg">
   <defs
      id="defs1030" />
   <sodipodi:namedview
@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.979899"
-     inkscape:cx="65.731502"
-     inkscape:cy="126.67891"
+     inkscape:zoom="1.4"
+     inkscape:cx="97.354731"
+     inkscape:cy="124.8323"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -35,7 +35,15 @@
      inkscape:window-height="1018"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
-     inkscape:window-maximized="1" />
+     inkscape:window-maximized="1"
+     showguides="true"
+     inkscape:guide-bbox="true">
+    <sodipodi:guide
+       position="-20.579754,8.9535293"
+       orientation="1,0"
+       id="guide833"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
   <metadata
      id="metadata1033">
     <rdf:RDF>
@@ -54,21 +62,12 @@
      id="layer1"
      transform="translate(-14.753451,-147.84149)"
      style="display:inline">
-    <g
-       id="g821"
-       transform="translate(0.3074633,5.9301758e-6)">
-      <circle
-         r="26.930803"
-         cy="185.875"
-         cx="54.87706"
-         id="path829"
-         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal" />
-      <path
-         inkscape:connector-curvature="0"
-         id="path853"
-         d="M 55.010633,208.09716 A 22.227768,22.227768 0 0 0 77.104892,185.87371 22.227768,22.227768 0 0 0 55.010633,163.65285 Z"
-         style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal" />
-    </g>
+    <circle
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       id="path829"
+       cx="55.184525"
+       cy="185.875"
+       r="26.930803" />
   </g>
   <g
      inkscape:groupmode="layer"

@@ -14,7 +14,7 @@
    viewBox="0 0 675.99028 486.15345"
    version="1.1"
    id="svg1029"
-   sodipodi:docname="links_highlight_2.svg"
+   sodipodi:docname="links_highlight.svg"
    inkscape:version="0.92.3 (2405546, 2018-03-11)">
   <sodipodi:namedview
      pagecolor="#ffffff"
@@ -35,7 +35,7 @@
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g4532" />
+     inkscape:current-layer="g883" />
   <defs
      id="defs1023">
     <ellipse
@@ -98,58 +98,7 @@
       </g>
       <g
          id="g883"
-         transform="matrix(7.6453541,0,0,7.0400511,301.45559,-258.79845)">
-        <path
-           inkscape:connector-curvature="0"
-           style="display:inline;fill:none;stroke:#000000;stroke-width:2.04448819;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           d="m -21.295684,7.0406484 2.577078,3.7407316"
-           id="path3988" />
-        <path
-           inkscape:connector-curvature="0"
-           style="display:inline;fill:none;stroke:#000000;stroke-width:2.04448819;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           d="m -2.2605564,34.897496 2.57707836,3.740733"
-           id="path3988-3" />
-        <path
-           inkscape:connector-curvature="0"
-           style="display:inline;fill:none;stroke:#000000;stroke-width:2.04448819;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           d="m -13.665431,40.37469 0.266819,4.466057"
-           id="path3988-3-0" />
-        <path
-           inkscape:connector-curvature="0"
-           style="display:inline;fill:none;stroke:#000000;stroke-width:2.04448819;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           d="m 7.6472209,27.700404 4.1968121,2.013084"
-           id="path3988-3-0-1" />
-        <path
-           inkscape:connector-curvature="0"
-           style="display:inline;fill:none;stroke:#000000;stroke-width:2.04448819;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           d="m -6.8483146,1.9010003 0.2668183,4.4660574"
-           id="path3988-3-0-6" />
-        <path
-           inkscape:connector-curvature="0"
-           style="display:inline;fill:none;stroke:#000000;stroke-width:2.04448819;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           d="M 10.127415,2.5578749 6.9983295,5.8954374"
-           id="path3988-3-0-6-7" />
-        <path
-           inkscape:connector-curvature="0"
-           style="display:inline;fill:none;stroke:#000000;stroke-width:2.04448819;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           d="m -37.946798,32.564203 4.463079,-1.401214"
-           id="path3988-3-0-6-7-8" />
-        <path
-           inkscape:connector-curvature="0"
-           style="display:inline;fill:none;stroke:#000000;stroke-width:2.04448819;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           d="m -27.304239,40.585946 -3.129086,3.337561"
-           id="path3988-3-0-6-7-83" />
-        <path
-           inkscape:connector-curvature="0"
-           style="display:inline;fill:none;stroke:#000000;stroke-width:2.04448819;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           d="m 13.152826,15.333987 4.463079,-1.401216"
-           id="path3988-3-0-6-7-7" />
-        <path
-           inkscape:connector-curvature="0"
-           style="display:inline;fill:none;stroke:#000000;stroke-width:2.04448819;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           d="m -31.641491,17.227489 4.196814,2.013084"
-           id="path3988-3-0-4" />
-      </g>
+         transform="matrix(7.6453541,0,0,7.0400511,301.45559,-258.79845)" />
     </g>
   </g>
   <g
